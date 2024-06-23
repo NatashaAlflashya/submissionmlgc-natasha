@@ -8,17 +8,17 @@ async function predictClassification(model, image) {
             .resizeNearestNeighbor([224, 224])
             .expandDims()
             .toFloat()
- 
-        const classes = ['Cancer', 'Non-cancer'];
- 
+  
         const prediction = model.predict(tensor);
         const score = await prediction.data();
- 
-        const classResult = score[0] > 0.5 ? 1 : 0;
-        const result = classes[classResult];
-        
+        console.log(score);
+        let classes;
+        if (score>=0.5){
+            classes = "Cancer";
+        }else{
+            classes = "Non-cancer"
+        }
         let suggestion;
- 
         if(result === 'Cancer') {
             suggestion = "Segera periksa ke dokter!"
         }
