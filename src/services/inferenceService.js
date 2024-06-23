@@ -19,6 +19,7 @@ async function predictClassification(model, image) {
             classes = "Non-cancer"
         }
         let suggestion;
+        const result = classes;
         if(result === 'Cancer') {
             suggestion = "Segera periksa ke dokter!"
         }
